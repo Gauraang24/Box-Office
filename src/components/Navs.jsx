@@ -1,31 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-const LINKS = [{
-    text: "Home",
-    to: "/"
-},
-{
-    text: "Starred",
-    to: "/Starred"
-}]
+const LINKS = [
+  {
+    text: 'Home',
+    to: '/',
+  },
+  {
+    text: 'Starred',
+    to: '/Starred',
+  },
+];
 
 const Navs = () => {
-    return (
-        <div>
-            <ul>
-                {LINKS.map((item) => {
-                    return (
-                        <li key={item.to}>
-                            <Link to={item.to}>{item.text}</Link>
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-    )
-}
+  return (
+    <div>
+      <ul>
+        {LINKS.map(item => {
+          return (
+            <li key={item.to}>
+              <Link to={item.to}>{item.text}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
-export default Navs
-Navs
+export default Navs;
+Navs;
