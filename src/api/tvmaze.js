@@ -1,4 +1,4 @@
-// const BASE_URL = 'https://api.tvmaze.com';
+
 
 const apiGet = async queryString => {
   const res = await fetch(`https://api.tvmaze.com${queryString}`);
