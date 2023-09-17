@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+// import React from 'react'
+// import { Link } from 'react-router-dom'
 
 const ShowCard = ({ name, image, id, summary }) => {
 
@@ -15,7 +15,7 @@ const ShowCard = ({ name, image, id, summary }) => {
             <p>{summaryStripped}</p>
 
             <div>
-                <Link to={`/show/${id}`}>Read More</Link>
+                <a href={`/show/${id}`} target='_blank' rel='noreferrer'>Read More</a>
                 <button type="button">Star Me</button>
             </div>
         </div>
