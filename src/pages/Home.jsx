@@ -16,7 +16,7 @@ const Home = () => {
     // disabled as long AS THE FILTER IS EMPTY
 
     enabled: !!filter,
-    refetchOnWindowFocus:false
+    refetchOnWindowFocus: false
   })
 
   // const [apiData, setApiData] = useState(null);
@@ -39,34 +39,34 @@ const Home = () => {
     //   } catch (error) {
     //     setApiDataError(error);
     //   }
-    };
-
-
-    const renderApiData = () => {
-      if (apiDataError) {
-        return <div>Error occured: {apiDataError.message}</div>;
-      }
-      if (apiData?.length === 0) {
-        return <div>No results found</div>
-      }
-
-      if (apiData) {
-
-        return apiData[0].show ? (<ShowGrid show={apiData} />) : (<ActorsGrid actor={apiData} />)
-
-
-
-      }
-
-      return null;
-    };
-    return (
-      <div>
-        This is home page
-        <SearchForm onSearch={onSearch} />
-        <div>{renderApiData()}</div>
-      </div>
-    );
   };
 
-  export default Home;
+
+  const renderApiData = () => {
+    if (apiDataError) {
+      return <div>Error occured: {apiDataError.message}</div>;
+    }
+    if (apiData?.length === 0) {
+      return <div>No results found</div>
+    }
+
+    if (apiData) {
+
+      return apiData[0].show ? (<ShowGrid show={apiData} />) : (<ActorsGrid actor={apiData} />)
+
+
+
+    }
+
+    return null;
+  };
+  return (
+    <div>
+      This is home page
+      <SearchForm onSearch={onSearch} />
+      <div>{renderApiData()}</div>
+    </div>
+  );
+};
+
+export default Home;
