@@ -4,30 +4,57 @@
 import styled from "styled-components";
 import { SearchCard, SearchImgWrapper } from "../../common/SearchCard";
 import { StarIcon } from "../../common/StarIcon";
+import { useRef } from "react";
 
 const ShowCard = ({ name, image, id, summary, onStarClick, isStarred }) => {
 
 
-    const summaryStripped = summary ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, '') + "..." : 'No description'
-    return (
-        <SearchCard>
-            <SearchImgWrapper>
-                <img src={image} alt={name} />
-            </SearchImgWrapper>
-            <h1>{name}</h1>
+  const summaryStripped = summary ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, '') + "..." : 'No description'
 
-            <p>{summaryStripped}</p>
+  const starBtnRef = useRef()
 
-            <ActionSection>
-                <a href={`/show/${id}`} target='_blank' rel='noreferrer'>Read More</a>
-                <StarBtn type="button" onClick={() => onStarClick(id)}>
-                <StarIcon active={isStarred}/>
-                    {/* {isStarred ? "Unstar Me" : "Star Me"} */}
+  const handleStarClick = () => {
+    onStarClick(id)
 
-                </StarBtn>
-            </ActionSection>
-        </SearchCard>
-    )
+    const starBtnEl = starBtnRef.current
+    console.log(starBtnRef)
+    console.log(starBtnEl)
+
+    if (!starBtnEl) return
+
+    if (isStarred) {
+      starBtnEl.classList.remove('animate')
+    } else {
+      starBtnEl.classList.add('animate')
+
+    }
+  }
+  return (
+    <SearchCard>
+      <SearchImgWrapper>
+        <img src={image} alt={name} />
+      </SearchImgWrapper>
+      <h1>{name}</h1>
+
+      <p>{summaryStripped}</p>
+
+      <ActionSection>
+        <a href={`/show/${id}`} target='_blank' rel='noreferrer'>Read More</a>
+
+        <StarBtn
+          ref={starBtnRef}
+          type="button"
+          onClick={handleStarClick}
+          // className={isStarred && "animate"}
+          >
+
+          <StarIcon active={isStarred} />
+
+
+        </StarBtn>
+      </ActionSection>
+    </SearchCard>
+  )
 }
 
 export default ShowCard
@@ -58,5 +85,21 @@ const StarBtn = styled.button`
   align-items: center;
   &:hover {
     cursor: pointer;
+  }
+  &.animate {
+    ${StarIcon} {
+      animation: increase 0.75s ease-in forwards;
+      @keyframes increase {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(3) rotate(45deg);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
   }
 `;
