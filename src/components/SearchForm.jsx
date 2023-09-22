@@ -8,13 +8,7 @@ const SearchForm = ({ onSearch }) => {
     const [searchOption, setSearchOption] = useState('shows')
 
     // console.log("component rerended")
-    useEffect(() => {
-        console.log(" 001 search option changed", searchOption)
-
-        return () => {
-            console.log("002 before next useEffect", searchOption)
-        }
-    }, [searchOption])
+   
 
     const onSearchInputString = ev => {
         setSearchString(ev.target.value);

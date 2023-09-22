@@ -63,7 +63,7 @@ const Show = () => {
 
   return (
     <div>
-      this is show page for {showId}
+      Loading....
     </div>
   )
 }
