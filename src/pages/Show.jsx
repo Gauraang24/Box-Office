@@ -26,7 +26,7 @@ const Show = () => {
 
 
       <BackHomeWrapper>
-        <Link to="/">GO back to Home</Link>
+        <Link to="/"> <strong>Go Back Home</strong> </Link>
       </BackHomeWrapper>
 
       <ShowMainData
