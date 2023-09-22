@@ -5,6 +5,7 @@ import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 import { useQuery } from '@tanstack/react-query';
+import { TextCenter } from '../common/TextCenter';
 // import styled, { css } from 'styled-components';
 
 
@@ -65,10 +66,10 @@ const Home = () => {
 
   const renderApiData = () => {
     if (apiDataError) {
-      return <div>Error occured: {apiDataError.message}</div>;
+      return <TextCenter>Error occured: {apiDataError.message}</TextCenter>;
     }
     if (apiData?.length === 0) {
-      return <div>No results found</div>
+      return <TextCenter>No results found</TextCenter>
     }
 
     if (apiData) {
@@ -85,7 +86,6 @@ const Home = () => {
     // <Container>
       <div>
         {/* <Button>Hello</Button> */}
-        This is home page
         <SearchForm onSearch={onSearch} />
         <div>{renderApiData()}</div>
       </div>

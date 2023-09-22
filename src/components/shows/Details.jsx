@@ -1,14 +1,21 @@
 import React from 'react'
+import styled from 'styled-components';
 
-const Details = ({status,premiered,network}) => {
+const Details = ({ status, premiered, network }) => {
   return (
-    <div>
-     <p>Status: {status}</p>
-     <p>
-        Premiered on: {premiered} {network ? `on ${network.name}`: null}
-     </p>
-    </div>
+    <DetailsWrapper>
+      <p>Status: {status}</p>
+      <p>
+        Premiered on: {premiered} {network ? `on ${network.name}` : null}
+      </p>
+    </DetailsWrapper>
   )
 }
 
 export default Details
+
+const DetailsWrapper = styled.div`
+  p {
+    margin: 5px 0;
+  }
+`;
