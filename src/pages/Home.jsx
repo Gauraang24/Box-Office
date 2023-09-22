@@ -5,6 +5,27 @@ import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 import { useQuery } from '@tanstack/react-query';
+// import styled, { css } from 'styled-components';
+
+
+// const Container = styled.div`
+// text-align: center
+// `
+// const Button = styled.button`
+// background: transparent;
+// border-radius: 3px;
+// border: 2px solid palevioletred;
+// color: palevioletred;
+// margin: 0.1em;
+// padding: 0.25em 1em;
+
+// ${props =>
+//     props.primary &&
+//     css`
+//       background:palevioletred;
+//       color:white
+//       `}
+// `
 
 const Home = () => {
 
@@ -61,11 +82,14 @@ const Home = () => {
     return null;
   };
   return (
-    <div>
-      This is home page
-      <SearchForm onSearch={onSearch} />
-      <div>{renderApiData()}</div>
-    </div>
+    // <Container>
+      <div>
+        {/* <Button>Hello</Button> */}
+        This is home page
+        <SearchForm onSearch={onSearch} />
+        <div>{renderApiData()}</div>
+      </div>
+    // {/* </Container> */}
   );
 };
 

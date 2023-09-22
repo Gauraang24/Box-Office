@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSearchStr } from "../lib/useSearchStr";
+import CustomRadio from "./CustomRadio";
 
 const SearchForm = ({ onSearch }) => {
     const [searchString, setSearchString] = useSearchStr('');
     const [searchOption, setSearchOption] = useState('shows')
 
     // console.log("component rerended")
-    useEffect(()=>{
+    useEffect(() => {
         console.log(" 001 search option changed", searchOption)
 
-        return ()=>{
+        return () => {
             console.log("002 before next useEffect", searchOption)
         }
-    },[searchOption])
+    }, [searchOption])
 
     const onSearchInputString = ev => {
         setSearchString(ev.target.value);
@@ -40,14 +41,30 @@ const SearchForm = ({ onSearch }) => {
                 value={searchString}
                 onChange={onSearchInputString}
             />
-            <label>
-                Shows
+            <CustomRadio
+                label="Shows"
+                name="search-option"
+                checked={searchOption === 'shows'}
+                value="shows"
+                onChange={onRadioChange} 
+                />
+
+            <CustomRadio
+                label="Actors"
+                name="search-option"
+                checked={searchOption === 'actors'}
+                value="actors"
+                onChange={onRadioChange} 
+                />
+
+            {/* <label> */}
+                {/* Shows
                 <input type="radio" name="search-option" checked={searchOption === 'shows'} value="shows" onChange={onRadioChange} />
             </label>
             <label>
                 Actors
                 <input type="radio" name="search-option" checked={searchOption === 'actors'} value="actors" onChange={onRadioChange} />
-            </label>
+            </label> */}
             <button type="submit">Search</button>
         </form>
     )
